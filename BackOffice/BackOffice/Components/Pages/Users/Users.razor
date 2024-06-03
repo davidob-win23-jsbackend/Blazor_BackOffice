@@ -29,7 +29,7 @@
 
         @if (editUser != null)
         {
-            <EditForm Context="editFormContext" Model="editUser" OnValidSubmit="HandleValidSubmit">
+            <EditForm Model="editUser" OnValidSubmit="HandleValidSubmit" Context="editFormContext">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
 
@@ -53,7 +53,6 @@
         }
     </Authorized>
 </AuthorizeView>
-
 
 @code {
     private ApplicationUser[]? users;
@@ -107,7 +106,6 @@
     private async Task DeleteUser(string userId)
     {
         var response = await Http.DeleteAsync($"http://localhost:7178/api/users/{userId}");
-
         if (response.IsSuccessStatusCode)
         {
             await LoadUsers();
