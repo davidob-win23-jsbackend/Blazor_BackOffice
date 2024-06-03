@@ -65,7 +65,7 @@
 
     private async Task LoadUsers()
     {
-        users = await Http.GetFromJsonAsync<ApplicationUser[]>("http://localhost:7178/api/GetUsers");
+        users = await Http.GetFromJsonAsync<ApplicationUser[]>("https://userprovider-davidob.azurewebsites.net/api/GetUsers?code=VrdeeYq8ErcJMBrbzY4IgBxtZL6NBsb7YMEMAUN3E4g2AzFuZD0Kjw%3D%3D");
     }
 
     private void EditUser(ApplicationUser user)
@@ -90,7 +90,7 @@
     {
         if (editUser != null)
         {
-            var response = await Http.PutAsJsonAsync($"http://localhost:7178/api/users/{editUser.Id}", editUser);
+            var response = await Http.PutAsJsonAsync($"https://userprovider-davidob.azurewebsites.net/api/users/{editUser.Id}?code=gseaJhWql3Yf2eTxutzVusz7FuGEhJXEXrlLlQFSsjC8AzFu02u3Lg%3D%3D", editUser);
             if (response.IsSuccessStatusCode)
             {
                 editUser = null;
@@ -105,7 +105,7 @@
 
     private async Task DeleteUser(string userId)
     {
-        var response = await Http.DeleteAsync($"http://localhost:7178/api/users/{userId}");
+        var response = await Http.DeleteAsync($"https://userprovider-davidob.azurewebsites.net/api/users/{userId}?code=CITlVVnULozgsAeBWcfRAqg4e6EZbxP-rfAP_UCDw4UdAzFu4NgZWg%3D%3D");
         if (response.IsSuccessStatusCode)
         {
             await LoadUsers();
